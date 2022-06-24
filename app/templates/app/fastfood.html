@@ -1,0 +1,36 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}FastFood{% endblock%}
+{% block main-content %}
+    <h2 class="title">Hunger'S FastFood</h2>
+    <div class="container-fluid mb-5">
+        <div class="row ">
+            <div class="col-md-8 text-center">
+                <div class="row">
+                    {% for ff in fastfoods %}
+                    <div class="col-md-4 col-sm-6 p-4">
+                        <img class="picture" src="{{ ff.ffimg }}">
+                        <h4 class="p-3" id="ffood{{ff.id}}">{{ff.name}}</h4>
+                        <div>
+                            <h5 class="" name="fafood{{ff.id}}" value="{{ff.price}}">Price :{{ff.price}}</h5>
+                        </div>
+                        <div>
+                            <button class="btn-info mt-3">Add To Cart</button>
+                        </div>
+                    </div>
+                    
+                    {% endfor %}
+                    
+                </div>
+            </div>
+            <div class="col-md-4 orders">
+                <div class="bg-dark p-4 rounded text-light ">
+                    <h2 class="text-center">Orders List</h2>
+                    <ul id="pcart"></ul>
+                    <h4 class="text-right" id="ptotal">Total:0 Rs</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'app/js/order.js' %}"></script>
+{% endblock main-content %}
